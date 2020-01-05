@@ -28,17 +28,14 @@ class Veiculo(models.Model):
     def __str__(self):
         return self.marca.nome + ' - ' + self.placa
 
-
 #como alternativa crie uma classe bairro também com uma foreignkey
-
 
 class Parametros(models.Model):
     valor_hora      = models.DecimalField(max_digits=5, decimal_places=2)
     valor_mes       = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self):
-        return 'Parametros gerais'
-    
+        return 'Parametros gerais'    
 
 
 class MovRotativo(models.Model):
@@ -65,4 +62,13 @@ class Mensalista(models.Model):
 
     def __str__(self):
         return str(self.veiculo) + ' - ' + str(self.inicio)
+    
+
+class MovMensalista(models.Model):
+    mensalista   = models.ForeignKey(Mensalista, on_delete=models.PROTECT)
+    dt_pgto      = models.DateField()
+    total        = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return str(self.mensalista) + ' - ' + str(self.total)
     
