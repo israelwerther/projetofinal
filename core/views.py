@@ -3,6 +3,7 @@ from .models import (
     Pessoa, 
     Veiculo, 
     MovRotativo,
+    Mensalista
 )
 
 
@@ -25,4 +26,10 @@ def lista_movrotativos(request):
     mov_rot = MovRotativo.objects.all()
     return render(
         request, 'core/lista_movrotativos.html', {'mov_rot': mov_rot})
+
+
+def lista_mensalistas(request):
+    mensalistas = Mensalista.objects.all()
+    return render(
+        request, 'core/lista_mensalistas.html', {'mensalistas': mensalistas})
         
