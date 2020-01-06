@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
 
 def home(request):
-    return HttpResponse('Ola mundo ....')
+    context = {'mensagem': 'Ola mundo'}
+    return render(request, 'core/index.html', context)
