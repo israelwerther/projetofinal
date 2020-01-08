@@ -3,7 +3,8 @@ from .models import (
     Pessoa, 
     Veiculo, 
     MovRotativo,
-    Mensalista
+    Mensalista,
+    MovMensalista
 )
 
 
@@ -32,4 +33,10 @@ def lista_mensalistas(request):
     mensalistas = Mensalista.objects.all()
     return render(
         request, 'core/lista_mensalistas.html', {'mensalistas': mensalistas})
+
+
+def lista_movmensalista(request):
+    mov_mensalistas = MovMensalista.objects.all()
+    return render(
+        request, 'core/lista_movmensalistas.html', {'mov_mensalistas': mov_mensalistas})
         
