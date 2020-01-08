@@ -2,9 +2,16 @@
 
 
 <ul>
-
     {% for pessoa in pessoas %}
         <li> {{ pessoa.nome }} </li>
     {% endfor %}
-
 </ul>
+
+
+<form action="{% url 'core_pessoa_novo' %}" method="POST">
+    {% csrf_token %} <!--Protege de ataques do tipo csrf -->
+
+    {{ form.as_p }}
+
+    <button type="submit">Cadastrar</button>
+</form>
