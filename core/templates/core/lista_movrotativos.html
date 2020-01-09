@@ -2,9 +2,16 @@
 
 
 <ul>
-
     {% for mov in mov_rot %}
         <li> {{ mov.checkin }} - {{ mov.placa }} </li>  
     {% endfor %}
-
 </ul>
+
+
+<form action="{% url 'core_movrotativos_novo' %}" method="POST">
+    {% csrf_token %} <!--Protege de ataques do tipo csrf -->
+
+    {{ form.as_p }}
+
+    <button type="submit">Cadastrar</button>
+</form>
