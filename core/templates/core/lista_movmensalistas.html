@@ -2,9 +2,16 @@
 
 
 <ul>
-
     {% for mov in mov_mensalistas %}
         <li> {{ mov.mensalista }} - {{ mov.dt_pgto }} </li>
     {% endfor %}
-
 </ul>
+
+
+<form action="{% url 'core_movmensalista_novo' %}" method="POST">
+    {% csrf_token %} <!--Protege de ataques do tipo csrf -->
+
+    {{ form.as_p }}
+
+    <button type="submit">Cadastrar</button>
+</form>
