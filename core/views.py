@@ -19,20 +19,32 @@ def home(request):
     context = {'mensagem': 'Ola mundo'}
     return render(request, 'core/index.html', context)
 
-
 def lista_pessoas(request):
     pessoas = Pessoa.objects.all()
     form = PessoaForm()
-    data = {'pessoas': pessoas, 'form': form}
+    data = {'pessoas': pessoas, 'form': form} #teste se pode ser apenas pessoa
     return render(request, 'core/lista_pessoas.html', data)
-
 
 def pessoa_novo(request):
     form = PessoaForm(request.POST or None)
+
     if form.is_valid():
         form.save()
     return redirect('core_lista_pessoas')
-    
+
+def pessoa_update(request, id):
+    data = {}
+    pessoa = Pessoa.objects.get(id=id)
+    form = PessoaForm(request.POST or None, instance=pessoa)
+    data['pessoa'] = pessoa
+    data['form'] = form
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('core_lista_pessoas')
+    else:
+        return render(request, 'core/update_pessoa.html', data)    
 
 def lista_veiculos(request):
     form = VeiculoForm()
