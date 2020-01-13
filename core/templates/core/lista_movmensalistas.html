@@ -1,9 +1,13 @@
-<h2>Lista mov_mensalistas</h2>
+<h2>Lista Movimentos Mensalista</h2>
 
 
 <ul>
     {% for mov in mov_mensalistas %}
-        <li> {{ mov.mensalista }} - {{ mov.dt_pgto }} </li>
+    <li> 
+        <a href="{% url 'core_movmensalista_update' mov.id %}">
+            {{ mov.mensalista }} - {{ mov.dt_pgto }} 
+        </a> 
+    </li>         
     {% endfor %}
 </ul>
 
