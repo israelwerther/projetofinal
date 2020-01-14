@@ -44,7 +44,16 @@ def pessoa_update(request, id):
             form.save()
             return redirect('core_lista_pessoas')
     else:
-        return render(request, 'core/update_pessoa.html', data)    
+        return render(request, 'core/update_pessoa.html', data)  
+
+def pessoa_delete(request, id):
+    pessoa = Pessoa.objects.get(id=id)
+    if request.method == 'POST':
+        pessoa.delete()
+        return redirect('core_lista_pessoas')
+    else:
+        return render(request, 'core/delete_confirm.html', {'pessoa': pessoa})    
+
     #---------------------------------------------------------------------------------
 
 def lista_veiculos(request):
