@@ -16,7 +16,11 @@ from .views import (
     movrotativos_update,
     mensalista_update,
     movmensalista_update,
-    pessoa_delete
+    pessoa_delete,
+    veiculo_delete,
+    movrotativos_delete,
+    mensalista_delete,
+    movmensalista_delete
 )
 
 urlpatterns = [
@@ -30,19 +34,24 @@ urlpatterns = [
     path('veiculos/', lista_veiculos, name='core_lista_veiculos'),
     path('veiculo-novo/', veiculo_novo, name='core_veiculo_novo'),
     path('veiculo-update/<int:id>', veiculo_update, name='core_veiculo_update'),
+    path('veiculo-delete/<int:id>', veiculo_delete, name='core_veiculo_delete'),
 
     path('mov-rot/', lista_movrotativos, name='core_lista_movrotativos'),
     path('mov-rot-novo/', movrotativos_novo, name='core_movrotativos_novo'),
-    path('mov-rot-update/<int:id>', movrotativos_update, 
+    path('mov-rot-update/<int:id>', movrotativos_update,
         name='core_movrotativos_update'),
+    path('mov-rot-delete/<int:id>', movrotativos_delete,
+        name='core_movrotativos_delete'),
 
     path('mensalistas/', lista_mensalistas, name='core_lista_mensalistas'),
     path('mensalista-novo/', mensalista_novo, name='core_mensalista_novo'),
     path('mensalista-update/<int:id>', mensalista_update, name='core_mensalista_update'),
+    path('mensalista-delete/<int:id>', mensalista_delete, name='core_mensalista_delete'),
 
     path('mov-mensal/', lista_movmensalista, name='core_lista_movmensalista'),
     path('mov-mensal-novo/', movmensalista_novo, name='core_movmensalista_novo'),
     path('mov-mensal-update/<int:id>', movmensalista_update, 
         name='core_movmensalista_update'),
+    path('mov-mensal-delete/<int:id>', movmensalista_delete, name='core_movmensalista_delete'),
 ]
     
